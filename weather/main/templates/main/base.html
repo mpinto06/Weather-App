@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Weather App</title>
+        {% load static %}
+        {% block style %}
+        {% endblock %}
+        <link href = "{% static '/css/main.css' %}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="search">
+                    <form method="post" action="/">
+                        {% csrf_token %}
+                        <input type="text" name="city" placeholder="Enter City Name" spellcheck="false">
+                        <button type="submit"><img src="{% static 'images/search.png' %}"></button>
+                    </form>        
+                </div>
+                <div class="weather">
+                    {% block weather_icon %}{% endblock %}
+                    <h1 class="temp">{% block temp %}{% endblock %}</h1>
+                    <h2 class="city">{% block city %}{% endblock %}</h2>
+                    <div class="details">
+                        <div class="col">
+                            {% block humidity %}{% endblock %}
+                        </div>
+                        <div class="col">
+                            {% block wind %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </body>
+</html>

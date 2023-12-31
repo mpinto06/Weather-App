@@ -1,0 +1,97 @@
+{% extends 'main/base.html'%}
+{% load static %}
+
+{% block city %}
+    {% if 'error' in weather_info %}
+        City Not Found
+    {% elif weather_info is not None %}
+        {{weather_info.name}}
+    {% endif %}
+{% endblock %}
+
+{% block weather_icon %}
+    {% if 'error' in weather_info or weather_info is None %}
+        <img src="{% static 'images/mist.png' %}" class="weather-icon">
+    {% elif weather_info.weather.0.main == 'Thunderstorm' or weather_info.main == 'Rain' %}
+        <img src="{% static 'images/rain.png' %}" class="weather-icon">
+    {% elif weather_info.weather.0.main == 'Drizzle' %}
+        <img src="{% static 'images/drizzle.png' %}" class="weather-icon">
+    {% elif weather_info.weather.0.main == 'Snow' %}
+        <img src="{% static 'images/snow.png' %}" class="weather-icon">
+    {% elif weather_info.weather.0.main == 'Clear' %}
+        <img src="{% static 'images/clear.png' %}" class="weather-icon">
+    {% elif weather_info.weather.0.main == 'Clouds' %}
+        <img src="{% static 'images/clouds.png' %}" class="weather-icon">
+    {% else %}
+        <img src="{% static 'images/mist.png' %}" class="weather-icon">
+    {% endif %}
+
+{% endblock %}
+
+{% block humidity %}
+    {% if 'error' not in weather_info and weather_info is not None %}
+        <img src="{% static 'images/humidity.png' %}">
+        <div>
+            <p class="humidity">{{weather_info.main.humidity}}%</p>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block wind %}
+    {% if 'error' not in weather_info and weather_info is not None %}
+        <img src="{% static 'images/wind.png' %}">
+        <div>
+            <p class="wind">{{weather_info.wind.speed|floatformat:"0"}}Km/h</p>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block temp %}
+    {% if 'error' not in weather_info and weather_info is not None %}
+        <h1 class="temp">{{weather_info.main.temp|floatformat:"0"}}°C</h1>
+    {% endif %}
+{% endblock %}
+
+{% block style %}
+    {% if 'error' not in city_images and city_images is not None %}
+    <style>
+        .container::before {
+            content :'';
+            background-image: url({{city_images.0.urls.raw}});
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            inset: 0;
+            opacity: 0.4;
+            z-index: -1;
+            animation: change 30s infinite ease-in-out;
+        }
+    </style>
+    {% endif %}
+    {% if city_images|length == 3 %}
+    <style>
+        @keyframes change {
+            0% {
+                background-image: url({{city_images.0.urls.raw}});
+            }
+            30% 
+            {
+                background-image: url({{city_images.1.urls.raw}});
+            }
+            60%
+            {
+                background-image: url({{city_images.2.urls.raw}});
+            }
+            100%
+            {
+            
+                background-image: url({{city_images.0.urls.raw}});
+            }
+        }
+    </style>
+    {% endif %}
+{% endblock %}
+
+
+
+
