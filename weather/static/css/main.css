@@ -5,22 +5,26 @@
     box-sizing: border-box; 
 }
 
-.container {
+body {
     height: 100vh;
     position: relative;
     background-color: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
 }
-
 .card {
     width: 90%;
     max-width: 470px;
     background: linear-gradient(135deg, #f16e62, #5b548a);
     color: #fff;
-    margin: 100px auto 0;
+    margin: 100px;
     border-radius: 20px;
     padding: 40px 35px;
     text-align: center;
 }
+
 
 .search {
     width: 100%;

@@ -55,16 +55,15 @@
 {% block style %}
     {% if 'error' not in city_images and city_images is not None %}
     <style>
-        .container::before {
+        body::before {
             content :'';
             background-image: url({{city_images.0.urls.raw}});
             background-size: cover;
-            background-repeat: no-repeat;
             position: absolute;
             inset: 0;
-            opacity: 0.4;
+            opacity: 0.6;
             z-index: -1;
-            animation: change 30s infinite ease-in-out;
+            animation: change 40s infinite ease-in-out;
         }
     </style>
     {% endif %}
@@ -74,11 +73,11 @@
             0% {
                 background-image: url({{city_images.0.urls.raw}});
             }
-            30% 
+            33% 
             {
                 background-image: url({{city_images.1.urls.raw}});
             }
-            60%
+            66%
             {
                 background-image: url({{city_images.2.urls.raw}});
             }
