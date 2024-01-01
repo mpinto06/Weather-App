@@ -32,9 +32,8 @@ SECRET_KEY = 'django-insecure-930djd&n(qn=@sw6i(_uy4annip8()l2-g1^2+pyr@_4zt*@88
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "weather-app-mpinto06.up.railway.app"
+    "*"
 ]
-
 
 # Application definition
 
@@ -129,7 +128,7 @@ MEDIA_URL = '/images/'
 STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    [os.path.join(BASE_DIR, 'static')]
+    os.path.join(BASE_DIR, 'static')
 ]
 
 # Default primary key field type

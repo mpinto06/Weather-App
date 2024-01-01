@@ -11,19 +11,19 @@
 
 {% block weather_icon %}
     {% if 'error' in weather_info or weather_info is None %}
-        <img src="{% static 'images/mist.png' %}" class="weather-icon">
+        <img src="{% static '/images/mist.png' %}" class="weather-icon">
     {% elif weather_info.weather.0.main == 'Thunderstorm' or weather_info.main == 'Rain' %}
-        <img src="{% static 'images/rain.png' %}" class="weather-icon">
+        <img src="{% static '/images/rain.png' %}" class="weather-icon">
     {% elif weather_info.weather.0.main == 'Drizzle' %}
-        <img src="{% static 'images/drizzle.png' %}" class="weather-icon">
+        <img src="{% static '/images/drizzle.png' %}" class="weather-icon">
     {% elif weather_info.weather.0.main == 'Snow' %}
-        <img src="{% static 'images/snow.png' %}" class="weather-icon">
+        <img src="{% static '/images/snow.png' %}" class="weather-icon">
     {% elif weather_info.weather.0.main == 'Clear' %}
-        <img src="{% static 'images/clear.png' %}" class="weather-icon">
+        <img src="{% static '/images/clear.png' %}" class="weather-icon">
     {% elif weather_info.weather.0.main == 'Clouds' %}
-        <img src="{% static 'images/clouds.png' %}" class="weather-icon">
+        <img src="{% static '/images/clouds.png' %}" class="weather-icon">
     {% else %}
-        <img src="{% static 'images/mist.png' %}" class="weather-icon">
+        <img src="{% static '/images/mist.png' %}" class="weather-icon">
     {% endif %}
 
 {% endblock %}
