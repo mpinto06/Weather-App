@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-930djd&n(qn=@sw6i(_uy4annip8()l2-g1^2+pyr@_4zt*@88
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'weather-app-mpinto06.up.railway.app'
+    'weather-app-mpinto06.up.railway.app', '127.0.0.1'
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://*weather-app-mpinto06.up.railway.app/','https://*.127.0.0.1']
@@ -126,11 +126,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/images/'
-STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_ROOT  = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    BASE_DIR / 'static'
 ]
 
 # Default primary key field type
